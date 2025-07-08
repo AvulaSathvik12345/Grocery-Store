@@ -5,9 +5,11 @@ from flask_restful import Api
 from Helpers.helpers import checkAuthentication, validateInput, getCategories, getProducts, newUser, getaProduct, addToCart, buyNow, getUserCart, getCartItem, sold, plotGeneration, getPurchases
 from API.api import addCategory, editCategory, deleteCategory, addProduct, editProduct, deleteProduct, editPurchase, deletePurchase, search 
 
+
 def create_app():
+    
     app = Flask(__name__)
-    app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///D:\Web\MAD1\GroceryStore\database\database.sqlite3"
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:6514@localhost/grocery'
     db.init_app(app)
     app.app_context().push()
     app.secret_key = os.urandom(24)
@@ -41,7 +43,7 @@ def managerlogin():
         if checkAuthentication('manager',username,password):
             session['user'] = username
             return redirect(url_for('managerdashboard'))
-        return render_template("error.html", message="Invalid credentials", link = '/manager', where = "Login again")
+        return render_template("error.html",message="Invalid credentials",link = '/manager',where= "Login again")
 
 @app.route('/manager_dashboard',methods = ['GET','POST'])
 def managerdashboard():
@@ -57,6 +59,7 @@ def addnewCategory():
     if 'user' not in session:
         return render_template('home.html')
     return render_template("addcategory.html")
+
 
 @app.route('/<string:category_id>/<string:category_name>/editcategory')
 def editaCategory(category_id,category_name):
@@ -214,7 +217,7 @@ api.add_resource(deletePurchase,'/purchaseapi/delete')
 api.add_resource(search,'/search')
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0')
+    app.run(host='0.0.0.0',debug=True)
 
 ''' Routes reference '''
 ''' Manager Login -> /manager -> /managerlogin -> /manager_dashboard(success)

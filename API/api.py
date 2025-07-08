@@ -98,17 +98,27 @@ class editProduct(Resource):
 class deleteProduct(Resource):
     def get(self):
         pass
+
     def put(self):
         pass
+
     def post(self):
-        choice = request.form['delete_choice']
-        cat_id = request.form['category_id']
-        prod_id = request.form['product_id']
+        # Retrieve data from the form submission
+        choice = request.form.get('delete_choice')
+        cat_id = request.form.get('category_id')
+        prod_id = request.form.get('product_id')
+
+        # Handle the user choice
         if choice == 'NO':
-            return redirect("/manager_dashboard")  
-        if removeProduct(cat_id,prod_id):
             return redirect("/manager_dashboard")
-        return redirect("/error")
+        elif choice == 'YES':
+            if removeProduct(cat_id, prod_id):
+                return redirect("/manager_dashboard")
+            else:
+                return redirect("/error")
+        else:
+            return redirect("/error")
+
     def delete(self):
         pass
 

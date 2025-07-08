@@ -1,41 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Delete Item</title>
-  </head>
-  <body>
-    <div>
-      <table>
-        <tr>
-          <td>Name</td>
-          <td>{{ product.name }}</td>
-        </tr>
-        <tr>
-          <td>Name</td>
-          <td>{{ product.price }} {{ product.unit }}</td>
-        </tr>
-        <tr>
-          <td>Availability</td>
-          {% if product.stock == 0 %}
-          <td>Out of stock</td>
-          {% else %}
-          <td>In Stock</td>
-          {% endif %}
-        </tr>
-      </table>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Delete Item Confirmation</title>
+  <link rel="stylesheet" href="styles.css"> <!-- Link to your external CSS file -->
+</head>
+<body>
+  <div class="container">
+    <div class="product-details">
+      <h2>Product Details</h2>
+      <ul>
+        <li><strong>Name:</strong> {{ product.name }}</li>
+        <li><strong>Price:</strong> {{ product.price }} {{ product.unit }}</li>
+        <li><strong>Availability:</strong> {% if product.stock == 0 %}Out of stock{% else %}In Stock{% endif %}</li>
+      </ul>
     </div>
-    <form method="POST" action="/purchaseapi/delete">
-      <input type="hidden" value="{{ user_id }}" name="user_id" />
-      <input type="hidden" value="{{ cart_id }}" name="cart_id" />
-      <label>Are you sure of deleting the item from cart?</label>
-      <select name="confirm">
-        <option value="No">No</option>
-        <option value="Yes">Yes</option>
-      </select>
-      <input type="submit" value="Delete" />
-    </form>
-  </body>
+    <div class="confirmation-form">
+      <form method="POST" action="/purchaseapi/delete">
+        <input type="hidden" value="{{ user_id }}" name="user_id" />
+        <input type="hidden" value="{{ cart_id }}" name="cart_id" />
+        <p>Are you sure you want to delete this item from the cart?</p>
+        <div class="form-group">
+          <label for="confirm">Confirm:</label>
+          <select id="confirm" name="confirm" required>
+            <option value="No">No</option>
+            <option value="Yes">Yes</option>
+          </select>
+        </div>
+        <button type="submit">Delete</button>
+      </form>
+    </div>
+  </div>
+</body>
 </html>

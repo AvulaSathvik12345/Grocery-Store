@@ -54,7 +54,7 @@ common_link:focus {
 /* Containers flexbox */
 .top_flex {
   display: flex;
-  flex-direction: row;
+  flex-direction: horizontal;
   flex-wrap: wrap;
   justify-content: space-around;
 }
@@ -67,3 +67,57 @@ common_link:focus {
 .sub_flex:hover {
   background: cyan;
 }
+
+.header {
+  background-color: #4CAF50;
+  padding: 10px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  display: flex; /* Add display flex to header */
+  justify-content: space-between; /* Align items horizontally with space between */
+  align-items: center; /* Center items vertically */
+}
+.navlogo {
+  text-decoration: none;
+  color: #333333;
+  font-size: 1.5rem;
+  margin-left: auto; /* Pushes the Grocery Store text to the middle */
+  margin-right: auto; /* Pushes the Grocery Store text to the middle */
+}
+.navmenu {
+  display: flex;
+  justify-content: flex-end;
+}
+.navlist {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+.navitem {
+  margin-left: 20px;
+  display:inline-block;
+}
+
+.navlink {
+  text-decoration: none;
+  color: #333333;
+  font-size: 1rem;
+}
+
+.navlink:hover {
+  color: #007bff;
+}
+
+/* Image styles */
+.img {
+  margin-top: 20px;
+}
+
+.img img {
+  max-width: 100%;
+  height: auto;
+}
+
+
+
+

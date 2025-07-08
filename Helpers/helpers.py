@@ -321,3 +321,4 @@ def getPurchases(user_id):
     ''' Data retrieval from purchases table for user profile '''
     purchases = db.session.query(Purchases).filter(Purchases.user_id == user_id).all()
     return purchases
+

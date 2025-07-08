@@ -1,18 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="../static/common.css" />
-    <title>Home</title>
-  </head>
-  <body class="top_flex">
-    <div class="sub_flex">
-      <a href="user" class="common_link">User</a>
-    </div>
-    <div class="sub_flex">
-      <a href="manager" class="common_link">Manager</a>
-    </div>
-  </body>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Grocery Store Homepage</title>
+  <link rel="stylesheet" href="../static/home.css" />
+</head>
+<body>
+<div class="logo">
+ <h1>Welcome to Our Grocery Store</h1>
+</div>
+
+<div class="container">
+  <div class="button-container">
+    <button onclick="userLogin()">User Login</button><br>
+    <button onclick="managerLogin()">Manager Login</button>
+  </div>
+</div>
+
+<script>
+  function userLogin() {
+    // Redirect to user login page or perform login action
+    window.location.href = "user";
+  }
+
+  function managerLogin() {
+    // Redirect to manager login page or perform login action
+    window.location.href = "manager";
+  }
+</script>
+
+</body>
 </html>
